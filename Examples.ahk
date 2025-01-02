@@ -1,8 +1,10 @@
-﻿#Requires AutoHotkey v2.0
+#Requires AutoHotkey v2.0
 #SingleInstance
 
 #include Notify.ahk
 
+;============================================================================================
+;   Show(title, message, image, sound, callback, options)
 ;============================================================================================
 
 Notify.Show('The quick brown fox jumps over the lazy dog.')
@@ -19,11 +21,11 @@ Notify.Show('Destroy the GUI by clicking on it before the set duration ends.', '
 mNotifyGUI := Notify.Show('Destroy the GUI using a Handle.', 'Press Ctrl+F1', 'none',,, 'theme=!Dark dur=0 pos=tc mali=center')
 ^F1::Notify.Destroy(mNotifyGUI['hwnd'])
 
-Notify.Show('Destroy the GUI with the TAG option. This destroys every GUI with the specified tag across all scripts.', 'Press Ctrl+F2',,,, 'theme=synthwave dur=0 pos=ct tag=myTAG style=edge mali=center maxw=375')
+Notify.Show('Destroy the GUI with the TAG option. This destroys every GUI with the specified tag across all scripts.', 'Press Ctrl+F2',,,, 'theme=synthwave dur=0 pos=ct style=edge tali=center mali=center maxw=375 tag=myTAG')
 ^F2::Notify.Destroy('myTAG')
 
-Notify.Show(strTitleDGTAG := 'Destroy the GUI with DG and TAG options. This destroys all GUIs with the tag before creating a new one.', 'Press Ctrl+F3',,,, 'theme=iDark dur=0 mali=center tag=thisTag maxw=325')
-^F3::Notify.Show(strTitleDGTAG, 'Press Ctrl+F3',,,, 'theme=iDark mali=center dg=5 tag=thisTag maxw=325')
+Notify.Show(strTitleDGTAG := 'Destroy the GUI with DG and TAG options. This destroys all GUIs with the tag before creating a new one.', 'Press Ctrl+F3',,,, 'theme=iDark dur=0 mali=center maxw=325 tag=thisTag')
+^F3::Notify.Show(strTitleDGTAG, 'Press Ctrl+F3',,,, 'theme=iDark mali=center maxw=325 dg=5 tag=thisTag')
 
 ; Assign a hotkey to destroy GUIs one by one, starting with the oldest.
 HotIfWinExist('NotifyGUI_ ahk_class AutoHotkeyGUI')
